@@ -17,10 +17,14 @@
                 chrome.scripting.executeScript({
                     target: { tabId },
                     files: ["foreground.js"]
-                }).then(() => {
-                    // console.log("foreground.js is inserted.")
-                }).catch(err => {
-                    // console.error(err);
+                }).then((value: chrome.scripting.InjectionResult[]) => {
+                    if (chrome.runtime.lastError) {
+                        return;
+                    }
+                }).catch((reason: any) => {
+                    if (chrome.runtime.lastError) {
+                        return;
+                    }
                 })
             }
         }

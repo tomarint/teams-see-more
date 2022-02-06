@@ -26,10 +26,8 @@
   },
   "permissions": [
     "tabs",
-    "activeTab",
     "scripting",
-    "contextMenus",
-    "declarativeContent"
+    "contextMenus"
   ],
   "host_permissions": [
     "https://teams.microsoft.com/*"
