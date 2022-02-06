@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Teams See More",
+  "version": "1.0.0",
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "24": "images/icon24.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "Teams See More"
+  },
+  "default_locale": "en",
+  "description": "__MSG_extDescription__",
+  "icons": {
+    "16": "images/icon16.png",
+    "24": "images/icon24.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "declarativeContent"
+  ],
+  "host_permissions": [
+    "https://teams.microsoft.com/*"
+  ]
+}

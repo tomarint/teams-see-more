@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Teams See More",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "This extension expands collapsed messages in Microsoft Teams Web.",
+    "description": "Extension description"
+  }
+}

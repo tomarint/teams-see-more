@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Teams 詳細表示",
+    "description": "Extension name"
+  },
+  "extDescription": {
+    "message": "Microsoft Teams Web の省略されたメッセージを一括で詳細表示にします。",
+    "description": "Extension description"
+  }
+}
