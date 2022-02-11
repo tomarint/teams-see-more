@@ -4,6 +4,12 @@ This is a chrome extension that expands collapsed messages in Microsoft Teams We
 
 ![Screenshot](./screenshots/1280x800.png)
 
+## How to install
+
+You can install from chrome web store below.
+
+https://chrome.google.com/webstore/detail/teams-see-more/ndnacjlajgpdeahkcooiilheddiabjdc
+
 ## Usage
 
 1. Show the context menu (normally right click) on Microsoft Teams Web.
