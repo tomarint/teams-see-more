@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Teams See More",
+  "name": "__MSG_extName__",
   "version": "1.0.2",
   "action": {
     "default_icon": {
@@ -10,7 +10,7 @@
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
-    "default_title": "Teams See More"
+    "default_title": "__MSG_extName__"
   },
   "default_locale": "en",
   "description": "__MSG_extDescription__",
