@@ -3,9 +3,8 @@
         readonly contextMenuId = "teams-see-more-context-menu-id";
         readonly messageName = "teams-see-more-message";
         matchedTab: { [key: number]: boolean; } = {};
-        contextMenuCreated: boolean = false;
         activeTabId: number = -1;
-        isUrlMatched(url?: string) {
+        isUrlMatched(url?: string): boolean {
             if (url != null && url.indexOf("https://teams.microsoft.com/") >= 0) {
                 return true;
             }
@@ -20,32 +19,26 @@
             const isMatched = this.matchedTab[tabId];
             // console.log(`updateContextMenus - ${isMatched}`);
             if (isMatched) {
-                if (!this.contextMenuCreated) {
-                    this.contextMenuCreated = true;
-                    // console.log(`Tab ${tabId} is now teams`);
-                    chrome.contextMenus.create({
-                        id: this.contextMenuId,
-                        title: "Teams See More", // chrome.i18n.getMessage("extName"),
-                        contexts: ["page"]
-                    }, () => {
-                        if (chrome.runtime.lastError) {
-                            // console.log(chrome.runtime.lastError.message);
-                            return;
-                        }
-                    });
-                }
+                // console.log(`Tab ${tabId} is now teams`);
+                chrome.contextMenus.create({
+                    id: this.contextMenuId,
+                    title: chrome.i18n.getMessage("extName"),
+                    contexts: ["page"]
+                }, () => {
+                    if (chrome.runtime.lastError) {
+                        // console.log(chrome.runtime.lastError);
+                        return;
+                    }
+                });
             }
             else {
-                if (this.contextMenuCreated) {
-                    this.contextMenuCreated = false;
-                    // console.log(`Tab ${tabId} is no longer teams`);
-                    chrome.contextMenus.remove(this.contextMenuId, () => {
-                        if (chrome.runtime.lastError) {
-                            // console.log(chrome.runtime.lastError.message);
-                            return;
-                        }
-                    });
-                }
+                // console.log(`Tab ${tabId} is no longer teams`);
+                chrome.contextMenus.remove(this.contextMenuId, () => {
+                    if (chrome.runtime.lastError) {
+                        // console.log(chrome.runtime.lastError);
+                        return;
+                    }
+                });
             }
         }
 
@@ -55,32 +48,33 @@
                 if (tab == null) {
                     return;
                 }
+                if (tabId < 0) {
+                    return;
+                }
                 if (changeInfo.url != null) {
                     // console.log("onUpdated: " + tab.id, JSON.stringify(changeInfo));
                     this.matchedTab[tabId] = this.isUrlMatched(changeInfo.url);
+                    this.updateContextMenu();
                 }
                 if (changeInfo.status === "complete") {
                     // console.log("onUpdated: " + tab.id, JSON.stringify(changeInfo), tab.url);
                     this.matchedTab[tabId] = this.isUrlMatched(tab.url);
+                    this.updateContextMenu();
                     if (this.matchedTab[tabId]) {
                         chrome.scripting.executeScript({
                             target: { tabId },
                             files: ["foreground.js"]
                         }).then((value: chrome.scripting.InjectionResult[]) => {
                             if (chrome.runtime.lastError) {
-                                // console.log(chrome.runtime.lastError.message);
+                                // console.log(chrome.runtime.lastError);
                                 return;
                             }
-                            this.updateContextMenu();
                         }).catch((reason: any) => {
                             if (chrome.runtime.lastError) {
-                                // console.log(chrome.runtime.lastError.message);
+                                // console.log(chrome.runtime.lastError);
                                 return;
                             }
                         })
-                    }
-                    else {
-                        this.updateContextMenu();
                     }
                 }
             });
@@ -97,7 +91,7 @@
             // Fired when a tab is created.
             // Note that the tab's URL may not be set at the time this event fired, but you can listen to onUpdated events to be notified when a URL is set.
             chrome.tabs.onCreated.addListener((tab: chrome.tabs.Tab) => {
-                if (tab != null && tab.id != null) {
+                if (tab != null && tab.id != null && tab.id >= 0) {
                     this.matchedTab[tab.id] = false;
                 }
             });
@@ -113,7 +107,7 @@
                 chrome.tabs.query({ active: true, currentWindow: true }, (tabs: chrome.tabs.Tab[]) => {
                     if (tabs.length > 0) {
                         const tab = tabs[0];
-                        if (tab.id != null) {
+                        if (tab.id != null && tab.id >= 0) {
                             this.activeTabId = tab.id;
                             this.updateContextMenu();
                         }
@@ -126,7 +120,7 @@
                 // console.log('context menu clicked');
                 // console.log(info);
                 // console.log(tab);
-                if (tab == null || tab.id == null) {
+                if (tab == null || tab.id == null || tab.id < 0) {
                     return;
                 }
                 if (info.menuItemId === this.contextMenuId) {
@@ -137,10 +131,11 @@
                         },
                         (response) => {
                             if (chrome.runtime.lastError) {
+                                // console.log("chrome.runtime.lastError: ", chrome.runtime.lastError);
                                 return;
                             }
                             if (response != null && response.message === "success") {
-                                // console.log("button#see_more succeeded.");
+                                // console.log("contextMenu is succeeded.");
                             }
                         }
                     );
