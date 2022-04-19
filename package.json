@@ -13,13 +13,15 @@
     "clean": "rm -rf ./dist/ && mkdir ./dist"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.154",
-    "@webpack-cli/generators": "^2.2.0",
-    "copy-webpack-plugin": "^9.0.1",
-    "ts-loader": "^9.2.5",
-    "typescript": "^4.3.5",
-    "webpack": "^5.49.0",
-    "webpack-cli": "^4.7.2"
+    "@types/chrome": "^0.0.181",
+    "@webpack-cli/generators": "^2.4.2",
+    "copy-webpack-plugin": "^10.2.4",
+    "html-minimizer-webpack-plugin": "^3.5.0",
+    "terser-webpack-plugin": "^5.3.1",
+    "ts-loader": "^9.2.8",
+    "typescript": "^4.6.3",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
   },
   "description": "Show hidden messages for Microsoft Teams."
 }
