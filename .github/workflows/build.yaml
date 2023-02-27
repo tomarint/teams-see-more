@@ -33,5 +33,5 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: artifact-upload
+        name: artifact-upload-node-${{ matrix.node-version }}
         path: ./upload.zip
