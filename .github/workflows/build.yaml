@@ -30,3 +30,8 @@ jobs:
 
     - name: Create package
       run: ./build-upload.sh
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: artifact-upload
+        path: ./upload.zip
