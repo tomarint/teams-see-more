@@ -1,6 +1,6 @@
 {
   "name": "teams-see-more",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "repository": "git@github.com:tomarint/teams-see-more.git",
   "author": "tomarin <tomarint@gmail.com>",
