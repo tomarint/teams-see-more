@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "version": "1.0.5",
+  "version": "<%= version %>",
   "action": {
     "default_icon": {
       "16": "images/icon16.png",
@@ -21,6 +21,13 @@
     "48": "images/icon48.png",
     "128": "images/icon128.png"
   },
+<% if (browser === 'firefox') { -%>
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{b26d45fa-ec75-4703-a539-2318aaa7a7fa}"
+    }
+  },
+<% } -%>  
   "content_scripts": [
     {
       "matches": [
@@ -31,9 +38,17 @@
       ]
     }
   ],
+<% if (browser === 'firefox') { -%>
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+<% } else { -%>
   "background": {
     "service_worker": "background.js"
   },
+<% } -%>
   "permissions": [
     "tabs",
     "contextMenus"
