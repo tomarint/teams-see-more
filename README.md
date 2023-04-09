@@ -6,9 +6,12 @@ This is a chrome extension that expands collapsed messages in Microsoft Teams We
 
 ## How to install
 
-You can install from chrome web store below.
+You can install from your browser extension store below.
 
-https://chrome.google.com/webstore/detail/teams-see-more/ndnacjlajgpdeahkcooiilheddiabjdc
+- [Chrome / Brave](https://chrome.google.com/webstore/detail/teams-see-more/ndnacjlajgpdeahkcooiilheddiabjdc)
+- [Firefox](https://addons.mozilla.org/ja/firefox/addon/teams-see-more/)
+- [Edge](https://microsoftedge.microsoft.com/addons/detail/teams-see-more/jnghkkghondopbbnnclkbcnapfchiiea)
+
 
 ## Usage
 
