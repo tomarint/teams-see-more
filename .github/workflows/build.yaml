@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 19.x]
+        node-version: [19.x]
 
     steps:
     - uses: actions/checkout@v3
@@ -33,5 +33,15 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: artifact-upload-node-${{ matrix.node-version }}
-        path: ./upload.zip
+        name: artifact-chrome-${{ github.sha }}
+        path: ./dist/chrome/
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: artifact-firefox-${{ github.sha }}
+        path: ./dist/firefox/
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: artifact-edge-${{ github.sha }}
+        path: ./dist/edge/
