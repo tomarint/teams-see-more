@@ -1,6 +1,6 @@
 # 🚀 Teams See More
 
-This is a chrome extension that expands collapsed messages in Microsoft Teams Web.
+This is a browser extension that expands collapsed messages in Microsoft Teams Web.
 
 ![Screenshot](./screenshots/1280x800.png)
 
