@@ -9,7 +9,7 @@ This is a browser extension that expands collapsed messages in Microsoft Teams W
 You can install from your browser extension store below.
 
 - [Chrome / Brave](https://chrome.google.com/webstore/detail/teams-see-more/ndnacjlajgpdeahkcooiilheddiabjdc)
-- [Firefox](https://addons.mozilla.org/ja/firefox/addon/teams-see-more/)
+- [Firefox](https://addons.mozilla.org/en-US/firefox/addon/teams-see-more/)
 - [Edge](https://microsoftedge.microsoft.com/addons/detail/teams-see-more/jnghkkghondopbbnnclkbcnapfchiiea)
 
 
