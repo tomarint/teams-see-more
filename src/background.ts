@@ -28,6 +28,7 @@ function createContextMenu(): void {
   });
 }
 
+createContextMenu();
 chrome.runtime.onInstalled.addListener(createContextMenu);
 chrome.runtime.onStartup.addListener(createContextMenu);
 
