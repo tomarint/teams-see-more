@@ -4,6 +4,8 @@ const path = require("path");
 const ejs = require("ejs");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
@@ -64,7 +66,19 @@ const createBrowserConfig = (browser) => {
       minimize: isProduction,
       minimizer: [
         new TerserPlugin(),
-        new HtmlMinimizerPlugin(),
+        new HtmlMinimizerPlugin({
+          minimizerOptions: {
+            collapseWhitespace: true,
+            removeComments: true,
+            conservativeCollapse: false,
+            removeComments: true,
+            // removeRedundantAttributes: true,
+            // removeEmptyAttributes: true,
+            // removeOptionalTags: true
+          },
+        }),
+        new CssMinimizerPlugin(),
+        new JsonMinimizerPlugin(),
       ],
     },
     resolve: {
