@@ -1,7 +1,12 @@
 {
+<% if (browser === 'firefox') { -%>
+  "manifest_version": 2,
+<% } else { -%>
   "manifest_version": 3,
+<% } -%>
   "name": "__MSG_extName__",
   "version": "<%= version %>",
+<% if (browser !== 'firefox') { -%>
   "action": {
     "default_icon": {
       "16": "images/icon16.png",
@@ -12,6 +17,7 @@
     },
     "default_title": "__MSG_extName__"
   },
+<% } -%>
   "default_locale": "en",
   "description": "__MSG_extDescription__",
   "icons": {
@@ -49,11 +55,13 @@
     "service_worker": "background.js"
   },
 <% } -%>
+<% if (browser !== 'firefox') { -%>
+  "host_permissions": [
+    "https://teams.microsoft.com/*"
+  ],
+<% } -%>
   "permissions": [
     "tabs",
     "contextMenus"
-  ],
-  "host_permissions": [
-    "https://teams.microsoft.com/*"
   ]
 }
