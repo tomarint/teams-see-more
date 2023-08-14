@@ -14,7 +14,7 @@
   },
   "description": "Show hidden messages for Microsoft Teams.",
   "devDependencies": {
-    "@types/chrome": "^0.0.241",
+    "@types/chrome": "^0.0.243",
     "@webpack-cli/generators": "^3.0.7",
     "copy-webpack-plugin": "^11.0.0",
     "css-minimizer-webpack-plugin": "^5.0.1",
